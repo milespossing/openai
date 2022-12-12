@@ -1,0 +1,8 @@
+#!/bin/bash
+API_KEY=$(cat $HOME/.secret/openapi.apikey)
+prompt=$1
+resp=$(curl --silent https://api.openai.com/v1/completions \
+	-H "Content-Type: application/json" \
+	-H "Authorization: Bearer $API_KEY" \
+	-d "{\"model\": \"text-davinci-003\", \"prompt\": \"$prompt\", \"temperature\": 0.5, \"max_tokens\": 1000}")
+echo "$resp" | jq -r ".choices[0].text"
