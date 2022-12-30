@@ -1,5 +1,5 @@
 #!/bin/bash
-API_KEY=$(cat $HOME/.secret/openapi.apikey)
+API_KEY=$(cat $HOME/.secret/openai.apikey)
 prompt=$1
 resp=$(curl --silent https://api.openai.com/v1/completions \
 	-H "Content-Type: application/json" \
